@@ -2,9 +2,9 @@ CC := clang++
 CFLAGS := -O2
 LDFLAGS := $(GAZLIB) -Wl,-rpath,$(shell dirname $(GAZLIB))
 
-# Temporary file names
-LL_FILE := $(shell mktemp).ll
-ASM_FILE := $(shell mktemp).s
+BUILD_DIR := $(shell pwd)/build
+LL_FILE := $(BUILD_DIR)/donut.ll
+ASM_FILE := $(BUILD_DIR)/donut.s
 
 # Targets
 all: donut
@@ -16,9 +16,10 @@ $(ASM_FILE): $(LL_FILE)
 	llc --load=$(GAZLIB) -O2 $< -o $@
 
 $(LL_FILE):
+	@mkdir -p $(BUILD_DIR)
 	$(GAZC) donut.gaz $@
 
 clean:
-	rm -f donut $(LL_FILE) $(ASM_FILE)
+	rm -f donut $(BUILD_DIR)
 
 .PHONY: all clean
