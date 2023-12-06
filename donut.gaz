@@ -1,3 +1,7 @@
+/*
+ * Translated from https://www.dropbox.com/s/79ga2m7p2bnj1ga/donut_deobfuscated.c?dl=0
+ */
+
 typedef integer int;
 typedef real float;
 typedef character char;
@@ -19,18 +23,18 @@ procedure main() returns integer {
     float i;
     float j;
     int k;
-    float[1760] z;
-    char[1760] b;
+    float[1761] z;
+    char[1761] b;
 
     ESC || "[2J" -> std_output;
 
     loop {
-        b = as<char[1760]>(32);
-        z = as<float[1760]>(0);
-
+        b = as<char[1761]>(32);
+        z = as<float[1761]>(0);
         j = 0;
+        i = 0;
+
         loop while (j < 6.28) {
-            i = 0;
             loop while (i < 6.28 ) {
                 float c = sin(i);
                 float d = cos(j);
@@ -48,13 +52,16 @@ procedure main() returns integer {
                 int o = x + 80 * y;
                 int N = as<int>(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n));
 
-                if (22 > y and y > 0 and x > 0 and 80 > x and D > z[(o + 1) % 1761 + 1]) {
+                if (o < 0) {
+                    o = -o;
+                }
+                if (22 > y and y > 1 and x > 1 and 80 > x and D > z[o % 1760 + 1]) {
                     int N_idx = N;
                     if (N <= 0) {
                         N_idx = 0;
                     }
-                    z[o + 1] = D;
-                    b[o + 1] = CHARS[N_idx + 1];
+                    z[o % 1761 + 1] = D;
+                    b[o % 1761 + 1] = CHARS[N_idx + 1];
                 }
 
                 i = i + 0.02;
@@ -75,14 +82,13 @@ procedure main() returns integer {
         }
 
         {
-            int sleep = 2147483647;
+            //int sleep = 7483647;
+            int sleep = 87483647;
             loop while (sleep > 0) {
-                sleep = sleep - 1;
-                sleep = sleep + 1 - 1 + 1 - 1 + 1;
                 sleep = sleep - 1;
             }
         }
     }
 
-    return 0;
+	return 0;
 }
