@@ -12,7 +12,7 @@ export GAZLIB=<path to gazprea runtime>
 Simply use the runner script to create an executable file.
 ```bash
 chmod +x run.sh
-./run.sh donut.gaz
+./run.sh
 ```
 
 ## Sources
