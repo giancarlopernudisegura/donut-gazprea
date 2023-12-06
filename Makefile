@@ -15,11 +15,11 @@ donut: $(ASM_FILE)
 $(ASM_FILE): $(LL_FILE)
 	llc --load=$(GAZLIB) -O2 $< -o $@
 
-$(LL_FILE):
+$(LL_FILE): donut.gaz
 	@mkdir -p $(BUILD_DIR)
-	$(GAZC) donut.gaz $@
+	$(GAZC) $< $@
 
 clean:
-	rm -f donut $(BUILD_DIR)
+	rm -rf donut $(BUILD_DIR)
 
 .PHONY: all clean
