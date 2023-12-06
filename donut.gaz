@@ -27,9 +27,10 @@ procedure main() returns integer {
     loop {
         b = as<char[1760]>(32);
         z = as<float[1760]>(0);
-        j = 0;
 
+        j = 0;
         loop while (j < 6.28) {
+            i = 0;
             loop while (i < 6.28 ) {
                 float c = sin(i);
                 float d = cos(j);
@@ -83,5 +84,5 @@ procedure main() returns integer {
         }
     }
 
-	return 0;
+    return 0;
 }
